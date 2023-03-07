@@ -55,15 +55,16 @@ public class PagePlugin implements Interceptor {
 			return invocation.proceed();
 		}
 
+		if (sql.endsWith(END)) {
+			sql = sql.substring(0, sql.length() - 1);
+		}
+
 		// 准备分页 SQL
 		int count;
 		page.setPageMax((count = count(sql, invocation)) % page.getPageSize() == 0 ?
 				count / page.getPageSize() :
 				count / page.getPageSize() + 1);
 
-		if (sql.endsWith(END)) {
-			sql = sql.substring(0, sql.length() - 1);
-		}
 
 		sql += LIMIT + ((page.getPageNum() - 1) * page.getPageSize() + "," + page.getPageSize());
 		SystemMetaObject.forObject(statementHandler.getBoundSql()).setValue("sql", sql);
@@ -75,7 +76,7 @@ public class PagePlugin implements Interceptor {
 		Connection       connection       = (Connection) invocation.getArgs()[0];
 
 		int    count    = 0;
-		String countSql = "select count(*) as total" + sql.substring(sql.indexOf(" from "));
+		String countSql = "select count(*) as total from (" + sql + ") as other";
 
 		PreparedStatement ps = null;
 		ResultSet         resultSet;
