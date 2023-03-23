@@ -10,7 +10,7 @@
         <version>2.2.6.RELEASE</version>
     </parent>
 
-    <groupId>cn.alvasw</groupId>
+    <groupId>cn.alvasw.plugin</groupId>
     <artifactId>web-pagehelper</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
@@ -28,6 +28,28 @@
         <mybatis.version>3.5.10</mybatis.version>
         <page-helper.version>1.0</page-helper.version>
     </properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>cn.alvasw.plugin</groupId>
+				<artifactId>page-helper-commons</artifactId>
+				<version>${page-helper.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>cn.alvasw.plugin</groupId>
+				<artifactId>page-helper-plugin</artifactId>
+				<version>1.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>cn.alvasw.plugin</groupId>
+				<artifactId>page-helper-web</artifactId>
+				<version>${page-helper.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
     <dependencies>
         <dependency>

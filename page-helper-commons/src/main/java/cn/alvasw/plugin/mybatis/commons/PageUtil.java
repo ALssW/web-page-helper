@@ -1,6 +1,6 @@
-package cn.alvasw.commons;
+package cn.alvasw.plugin.mybatis.commons;
 
-import cn.alvasw.entity.Page;
+import cn.alvasw.plugin.mybatis.entity.Page;
 
 /**
  * @author ALsW

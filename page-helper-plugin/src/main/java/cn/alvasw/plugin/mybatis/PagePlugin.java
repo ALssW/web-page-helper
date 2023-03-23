@@ -1,7 +1,7 @@
-package cn.alvasw.plugin;
+package cn.alvasw.plugin.mybatis;
 
-import cn.alvasw.commons.PageUtil;
-import cn.alvasw.entity.Page;
+import cn.alvasw.plugin.mybatis.commons.PageUtil;
+import cn.alvasw.plugin.mybatis.entity.Page;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.plugin.Intercepts;

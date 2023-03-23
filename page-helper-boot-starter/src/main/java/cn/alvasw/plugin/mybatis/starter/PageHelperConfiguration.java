@@ -1,7 +1,7 @@
-package cn.alvasw.starter;
+package cn.alvasw.plugin.mybatis.starter;
 
-import cn.alvasw.plugin.PagePlugin;
-import cn.alvasw.web.aspect.PageAspect;
+import cn.alvasw.plugin.mybatis.PagePlugin;
+import cn.alvasw.plugin.mybatis.web.aspect.PageAspect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

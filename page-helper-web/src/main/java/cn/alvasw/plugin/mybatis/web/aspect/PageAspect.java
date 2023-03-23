@@ -1,7 +1,7 @@
-package cn.alvasw.web.aspect;
+package cn.alvasw.plugin.mybatis.web.aspect;
 
-import cn.alvasw.commons.PageUtil;
-import cn.alvasw.entity.PageResult;
+import cn.alvasw.plugin.mybatis.commons.PageUtil;
+import cn.alvasw.plugin.mybatis.entity.PageResult;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -11,6 +11,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.InvalidParameterException;
 
 /**
  * @author ALsW
@@ -26,14 +27,19 @@ public class PageAspect {
 	private String localPageSize;
 
 	@Around("@within(org.springframework.web.bind.annotation.RestController)")
-	public Object pageAround(ProceedingJoinPoint joinPoint) {
+	public Object pageAround(ProceedingJoinPoint joinPoint) throws Throwable {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 
 		String pageNum  = request.getParameter(localPageNum);
 		String pageSize = request.getParameter(localPageSize);
 
 		if (StringUtils.hasLength(pageNum) && StringUtils.hasLength(pageSize)) {
-			PageUtil.setPage(Integer.parseInt(pageNum), Integer.parseInt(pageSize));
+			int num  = Integer.parseInt(pageNum);
+			int size = Integer.parseInt(pageSize);
+			if (num <= 0 || size <= 0) {
+				throw new InvalidParameterException("page num or page size cant small than 1");
+			}
+			PageUtil.setPage(num, size);
 		}
 
 		try {
@@ -42,12 +48,8 @@ public class PageAspect {
 				((PageResult) o).setPage(PageUtil.getPage());
 			}
 			return o;
-		} catch (Throwable throwable) {
-			throwable.printStackTrace();
 		} finally {
 			PageUtil.clear();
 		}
-
-		return null;
 	}
 }

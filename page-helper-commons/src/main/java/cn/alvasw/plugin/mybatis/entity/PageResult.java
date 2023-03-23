@@ -1,4 +1,4 @@
-package cn.alvasw.entity;
+package cn.alvasw.plugin.mybatis.entity;
 
 /**
  * @author ALsW
@@ -9,11 +9,21 @@ public class PageResult {
 
 	private Page page;
 
+	private String msg;
+
 	public Page getPage() {
 		return page;
 	}
 
 	public void setPage(Page page) {
 		this.page = page;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 }

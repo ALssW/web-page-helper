@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>web-pagehelper</artifactId>
-        <groupId>cn.alvasw</groupId>
+        <groupId>cn.alvasw.plugin</groupId>
         <version>1.0</version>
     </parent>
     <packaging>jar</packaging>
@@ -19,19 +19,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.alvasw</groupId>
-            <artifactId>page-helper-commons</artifactId>
-            <version>${page-helper.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-        <dependency>
+	    <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <scope>provided</scope>
         </dependency>
+
+	    <dependency>
+		    <groupId>cn.alvasw.plugin</groupId>
+		    <artifactId>page-helper-commons</artifactId>
+	    </dependency>
     </dependencies>
 
 </project>

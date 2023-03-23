@@ -1,4 +1,4 @@
-package cn.alvasw.entity;
+package cn.alvasw.plugin.mybatis.entity;
 
 /**
  * @author ALsW

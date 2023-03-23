@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  cn.alvasw.starter.PageHelperConfiguration
+  cn.alvasw.plugin.mybatis.starter.PageHelperConfiguration
